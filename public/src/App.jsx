@@ -15,8 +15,7 @@ class ProductList extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <h1>My Company Inventory</h1>                
-                <hr/>
+                <h1>My Company Inventory</h1>                               
                 <h3>Showing all available products</h3>
                 <hr/>
                 <ProductTable products = {this.state.products}/>
@@ -29,16 +28,16 @@ class ProductList extends React.Component{
 
 class ProductTable extends React.Component {   
     render() {
-        
+        const rowStyle = {border: "1px solid silver", padding: 4};
         const productRows = this.props.products.map(product => <ProductRow key={product.id} product={product}/>);
         return(
-            <table>
+            <table className="productTable">
                 <thead>
                     <tr>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Image</th>                    
+                    <th style={rowStyle}>Product Name</th>
+                    <th style={rowStyle}>Price</th>
+                    <th style={rowStyle}>Category</th>
+                    <th style={rowStyle}>Image</th>                    
                     </tr>
                 </thead>
                 <tbody>
@@ -52,12 +51,13 @@ class ProductTable extends React.Component {
 class ProductRow extends React.Component{
     render(){        
         const product = this.props.product;
+        const rowStyle = {border: "1px solid silver", padding: 4};                
         return(            
             <tr>
-                <td>{product.productName}</td>
-                <td>${product.pricePerUnit}</td>
-                <td>{product.category}</td>
-                <td><a href={product.imageUrl} target="_blank">View</a></td>                
+                <td style={rowStyle}>{product.productName}</td>
+                <td style={rowStyle}>${product.pricePerUnit}</td>
+                <td style={rowStyle}>{product.category}</td>
+                <td style={rowStyle}><a href={product.imageUrl} target="_blank">View</a></td>                
             </tr>
         )
     }
@@ -86,19 +86,40 @@ class ProductAdd extends React.Component {
     }
     render() {
         return(
-            <form name="productAdd" onSubmit={this.handleSubmit}>
-                <select name="category">
-                    <option value="Shirts">Shirts</option>
-                    <option value="Jeans">Jeans</option>
-                    <option value="Jackets">Jackets</option>
-                    <option value="Sweaters">Sweaters</option>
-                    <option value="Accessories">Accessories</option>
-                </select>
-                <input type="text" name="pricePerUnit" placeholder="Price Per Unit" defaultValue="$"/>
-                <input type="text" name="productName" placeholder="Product Name" />
-                <input type="text" name="imageUrl" placeholder="Image URL" />
-                <button>Add Product</button>
-            </form>
+            <div>
+                <h3>Add a new product to inventory</h3>
+                <hr/>
+                <div className="row">
+                    <form name="productAdd" onSubmit={this.handleSubmit}>
+                        <div className="column">                            
+                            <p><label htmlFor="category">Category : </label><br/>
+                                <select name="category">
+                                    <option value="Shirts">Shirts</option>
+                                    <option value="Jeans">Jeans</option>
+                                    <option value="Jackets">Jackets</option>
+                                    <option value="Sweaters">Sweaters</option>
+                                    <option value="Accessories">Accessories</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label htmlFor="productName">Product Name : </label><br/>
+                                <input type="text" name="productName"/>
+                            </p>
+                            <button className="button">Add Product</button>
+                        </div>
+                        <div className="column">                            
+                            <p>
+                                <label htmlFor="pricePerUnit">Price Per Unit : </label><br/>
+                                <input type="text" name="pricePerUnit" defaultValue="$"/>
+                            </p>
+                            <p>
+                                <label htmlFor="image">Image : </label><br/>
+                                <input type="text" name="imageUrl" />
+                            </p>
+                        </div>
+                    </form>
+                </div>               
+            </div>
         )
     }  
 }

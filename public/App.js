@@ -17,7 +17,7 @@ class ProductList extends React.Component {
   }
 
   render() {
-    return React.createElement(React.Fragment, null, React.createElement("h1", null, "My Company Inventory"), React.createElement("hr", null), React.createElement("h3", null, "Showing all available products"), React.createElement("hr", null), React.createElement(ProductTable, {
+    return React.createElement(React.Fragment, null, React.createElement("h1", null, "My Company Inventory"), React.createElement("h3", null, "Showing all available products"), React.createElement("hr", null), React.createElement(ProductTable, {
       products: this.state.products
     }), React.createElement("hr", null), React.createElement(ProductAdd, {
       addProduct: this.addProduct
@@ -28,11 +28,25 @@ class ProductList extends React.Component {
 
 class ProductTable extends React.Component {
   render() {
+    const rowStyle = {
+      border: "1px solid silver",
+      padding: 4
+    };
     const productRows = this.props.products.map(product => React.createElement(ProductRow, {
       key: product.id,
       product: product
     }));
-    return React.createElement("table", null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", null, "Product Name"), React.createElement("th", null, "Price"), React.createElement("th", null, "Category"), React.createElement("th", null, "Image"))), React.createElement("tbody", null, productRows));
+    return React.createElement("table", {
+      className: "productTable"
+    }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
+      style: rowStyle
+    }, "Product Name"), React.createElement("th", {
+      style: rowStyle
+    }, "Price"), React.createElement("th", {
+      style: rowStyle
+    }, "Category"), React.createElement("th", {
+      style: rowStyle
+    }, "Image"))), React.createElement("tbody", null, productRows));
   }
 
 }
@@ -40,7 +54,19 @@ class ProductTable extends React.Component {
 class ProductRow extends React.Component {
   render() {
     const product = this.props.product;
-    return React.createElement("tr", null, React.createElement("td", null, product.productName), React.createElement("td", null, "$", product.pricePerUnit), React.createElement("td", null, product.category), React.createElement("td", null, React.createElement("a", {
+    const rowStyle = {
+      border: "1px solid silver",
+      padding: 4
+    };
+    return React.createElement("tr", null, React.createElement("td", {
+      style: rowStyle
+    }, product.productName), React.createElement("td", {
+      style: rowStyle
+    }, "$", product.pricePerUnit), React.createElement("td", {
+      style: rowStyle
+    }, product.category), React.createElement("td", {
+      style: rowStyle
+    }, React.createElement("a", {
       href: product.imageUrl,
       target: "_blank"
     }, "View")));
@@ -72,10 +98,16 @@ class ProductAdd extends React.Component {
   }
 
   render() {
-    return React.createElement("form", {
+    return React.createElement("div", null, React.createElement("h3", null, "Add a new product to inventory"), React.createElement("hr", null), React.createElement("div", {
+      className: "row"
+    }, React.createElement("form", {
       name: "productAdd",
       onSubmit: this.handleSubmit
-    }, React.createElement("select", {
+    }, React.createElement("div", {
+      className: "column"
+    }, React.createElement("p", null, React.createElement("label", {
+      htmlFor: "category"
+    }, "Category : "), React.createElement("br", null), React.createElement("select", {
       name: "category"
     }, React.createElement("option", {
       value: "Shirts"
@@ -87,20 +119,27 @@ class ProductAdd extends React.Component {
       value: "Sweaters"
     }, "Sweaters"), React.createElement("option", {
       value: "Accessories"
-    }, "Accessories")), React.createElement("input", {
+    }, "Accessories"))), React.createElement("p", null, React.createElement("label", {
+      htmlFor: "productName"
+    }, "Product Name : "), React.createElement("br", null), React.createElement("input", {
+      type: "text",
+      name: "productName"
+    })), React.createElement("button", {
+      className: "button"
+    }, "Add Product")), React.createElement("div", {
+      className: "column"
+    }, React.createElement("p", null, React.createElement("label", {
+      htmlFor: "pricePerUnit"
+    }, "Price Per Unit : "), React.createElement("br", null), React.createElement("input", {
       type: "text",
       name: "pricePerUnit",
-      placeholder: "Price Per Unit",
       defaultValue: "$"
-    }), React.createElement("input", {
+    })), React.createElement("p", null, React.createElement("label", {
+      htmlFor: "image"
+    }, "Image : "), React.createElement("br", null), React.createElement("input", {
       type: "text",
-      name: "productName",
-      placeholder: "Product Name"
-    }), React.createElement("input", {
-      type: "text",
-      name: "imageUrl",
-      placeholder: "Image URL"
-    }), React.createElement("button", null, "Add Product"));
+      name: "imageUrl"
+    }))))));
   }
 
 }
