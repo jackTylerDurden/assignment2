@@ -25,12 +25,12 @@ body{
     cursor: pointer;
 }
 
-.productTable{
+.prodTable{
     border-collapse: collapse;
-    width: 600px;
+    width: 100%;    
 }
 
-.productTable th, td{
+.prodTable th, td{
     border: 1px solid silver;
     padding: 4px;
     width: 25%;

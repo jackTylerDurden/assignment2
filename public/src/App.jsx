@@ -31,7 +31,7 @@ class ProductTable extends React.Component {
         const rowStyle = {border: "1px solid silver", padding: 4};
         const productRows = this.props.products.map(product => <ProductRow key={product.id} product={product}/>);
         return(
-            <table className="productTable">
+            <table className="prodTable">
                 <thead>
                     <tr>
                     <th style={rowStyle}>Product Name</th>
@@ -54,10 +54,10 @@ class ProductRow extends React.Component{
         const rowStyle = {border: "1px solid silver", padding: 4};                
         return(            
             <tr>
-                <td style={rowStyle}>{product.productName}</td>
-                <td style={rowStyle}>${product.pricePerUnit}</td>
-                <td style={rowStyle}>{product.category}</td>
-                <td style={rowStyle}><a href={product.imageUrl} target="_blank">View</a></td>                
+                <td align="center" style={rowStyle}>{product.productName}</td>
+                <td align="center" style={rowStyle}>${product.pricePerUnit}</td>
+                <td align="center" style={rowStyle}>{product.category}</td>
+                <td align="center" style={rowStyle}><a href={product.imageUrl} target="_blank">View</a></td>                
             </tr>
         )
     }

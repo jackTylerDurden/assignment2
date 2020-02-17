@@ -37,7 +37,7 @@ class ProductTable extends React.Component {
       product: product
     }));
     return React.createElement("table", {
-      className: "productTable"
+      className: "prodTable"
     }, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", {
       style: rowStyle
     }, "Product Name"), React.createElement("th", {
@@ -59,12 +59,16 @@ class ProductRow extends React.Component {
       padding: 4
     };
     return React.createElement("tr", null, React.createElement("td", {
+      align: "center",
       style: rowStyle
     }, product.productName), React.createElement("td", {
+      align: "center",
       style: rowStyle
     }, "$", product.pricePerUnit), React.createElement("td", {
+      align: "center",
       style: rowStyle
     }, product.category), React.createElement("td", {
+      align: "center",
       style: rowStyle
     }, React.createElement("a", {
       href: product.imageUrl,
