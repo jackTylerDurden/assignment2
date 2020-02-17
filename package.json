@@ -1,0 +1,34 @@
+{
+  "name": "assignment2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -w server server/server.js",
+    "watch": "babel public/src --presets @babel/react --out-dir public --watch --verbose",
+    "compile": "babel public/src --presets @babel/react --out-dir public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackTylerDurden/assignment2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackTylerDurden/assignment2/issues"
+  },
+  "homepage": "https://github.com/jackTylerDurden/assignment2#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-cli": "^6.26.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-install": "^2.1.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  }
+}
