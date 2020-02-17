@@ -5,13 +5,6 @@ body{
     width:960px;
     margin:20px auto;   
 }
-
-/* #content{
-    border: 1px solid #000;
-} */
-
-
-
 .button {
     background-color: white;    
     color: black;
@@ -41,7 +34,6 @@ body{
   clear: both;
   }
   
-  /* Create two equal columns that sits next to each other */
 .column {
     float: left;
     width: 50%;
