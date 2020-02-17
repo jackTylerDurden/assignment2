@@ -35,11 +35,6 @@ body{
     width: 25%;
 }
 
-* {
-    box-sizing: border-box;
-  }
-  
-
 .row:after {
     content: "";
   display: table;
